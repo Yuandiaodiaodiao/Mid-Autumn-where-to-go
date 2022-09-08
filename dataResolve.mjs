@@ -18,7 +18,7 @@ const getSafe = async () => {
     } = datax;
     console.log("数据更新时间", upateTime)
 
-    const blackList = ["外地来沪人员", '待确认人员', '外来人员', "境外输入", "外地来湘人员", "省外来返豫人员", "待确认","境外来沪人员","区外输入人员","涉冬（残）奥闭环人员"]
+    const blackList = ["外地来沪人员", '待确认人员', '外来人员', "境外输入", "外地来湘人员", "省外来返豫人员", "待确认","境外来沪人员","区外输入人员","涉冬（残）奥闭环人员","外地来津人员"]
 
     // 一二线城市
     const betterCity=[
@@ -42,7 +42,7 @@ const getSafe = async () => {
             const {totalNum} = dangerousAreas;
             const noNative = noNativeRelativeDays.replace('连续', '').replace('无新增病例', '');
             if (totalNum === 0 && nativeRelative === 0 && asymptomaticRelative === 0 || noNative) {
-                return `${city.city} ${noNative}`;
+                return `${city.city} ${noNativeRelativeDays} 新增确诊${nativeRelative} 新增无症状 ${asymptomaticRelative} 中高风险区域${totalNum}`;
             }
         }).filter(Boolean)
         if (safeCitys.length === 0) return;
