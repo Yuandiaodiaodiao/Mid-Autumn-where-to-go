@@ -42,7 +42,7 @@ const getSafe = async () => {
             const {totalNum} = dangerousAreas;
             const noNative = noNativeRelativeDays.replace('连续', '').replace('无新增病例', '');
             if (totalNum === 0 && nativeRelative === 0 && asymptomaticRelative === 0 || noNative) {
-                return `${city.city} ${noNativeRelativeDays} 新增确诊${nativeRelative} 新增无症状 ${asymptomaticRelative} 中高风险区域${totalNum}`;
+                return `${city.city} ${noNativeRelativeDays.replace('连续',"  ")} 新增确诊${nativeRelative} 新增无症状 ${asymptomaticRelative} 中高风险区域${totalNum}`;
             }
         }).filter(Boolean)
         if (safeCitys.length === 0) return;
